@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Blog";
+}
+@model BlogModel
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+@using CommonMark;
+
+<div>
+    @foreach (var entry in Model.Entries)
+    {
+        <h2>@entry.Fields.title</h2>
+
+        <p><strong>Created at:</strong> @entry.SystemProperties.CreatedAt</p>
+        
+        <div>
+            @Html.Raw(CommonMark.CommonMarkConverter.Convert(@entry.Fields.Value<string>("content")))
+        </div>
+        <hr />
+    }
+
+    @if (!Model.Entries.Any())
+    {
+        <p>You have no entries, you should create some!</p>
+    }
+</div>
