@@ -1,2 +1,2 @@
 # KhaledotNet
-Hackathong project using Contentful .NetSDK
+Hackathon project using Contentful .Net SDK
